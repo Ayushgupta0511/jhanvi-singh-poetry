@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Jhanvi Singh — Her Poetry Garden 🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Satisfy&family=Parisienne&family=Sacramento&family=Caveat:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Italiana&family=Poiret+One&family=Belleza&family=Josefin+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            background: #fdf2f8;
+            color: #4a2040;
+            cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🌸</text></svg>") 16 16, auto;
+        }
+
+        /* ═══════════════════════════════════════════
+           PRELOADER
+           ═══════════════════════════════════════════ */
+        .preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #fce4ec, #f3e5f5, #fce4ec);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #880e4f;
+            animation: preloaderPulse 1.5s ease-in-out infinite;
+        }
+
+        .preloader-flowers {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            margin-top: 1rem;
+            animation: preloaderSpin 3s linear infinite;
+        }
+
+        @keyframes preloaderPulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes preloaderSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION BAR
+           ═══════════════════════════════════════════ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(244,143,177,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 4px 30px rgba(136,14,79,0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6rem;
+            color: #880e4f;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: #880e4f;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #f48fb1, #ce93d8);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: #ad1457; }
+
+        /* ═══════════════════════════════════════════
+           FLOATING EMOJIS & PETALS
+           ═══════════════════════════════════════════ */
+        .floating-emojis {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .emoji-float {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: floatDown linear infinite;
+            opacity: 0.55;
+            filter: drop-shadow(0 0 4px rgba(255,182,193,0.5));
+        }
+
+        @keyframes floatDown {
+            0% { transform: translateY(-100px) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 0.65; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(110vh) rotate(720deg) scale(0.5); opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════
+           FLORAL BORDER DECORATIONS
+           ═══════════════════════════════════════════ */
+        .floral-border-left, .floral-border-right {
+            position: fixed;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 1.6rem;
+            opacity: 0.35;
+        }
+        .floral-border-left { left: 0; }
+        .floral-border-right { right: 0; }
+
+        .floral-border-left span, .floral-border-right span {
+            animation: gentleSway 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleSway {
+            0% { transform: rotate(-10deg) scale(1); }
+            100% { transform: rotate(10deg) scale(1.15); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SPARKLE CURSOR TRAIL
+           ═══════════════════════════════════════════ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            z-index: 9999;
+            animation: sparkleAnim 1s ease-out forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: scale(0) rotate(180deg) translateY(-40px); opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO CAROUSEL SECTION
+           ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+            transform: scale(1.05);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) saturate(1.2);
+        }
+
+        .carousel-slide .slide-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(136,14,79,0.45) 0%,
+                rgba(173,20,87,0.3) 30%,
+                rgba(106,27,154,0.35) 60%,
+                rgba(136,14,79,0.5) 100%
+            );
+        }
+
+        /* Carousel text overlay */
+        .hero-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            color: #fff;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.3), 0 0 60px rgba(255,182,193,0.3);
+            margin-bottom: 0.8rem;
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-family: 'Italiana', serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: fadeInUp 1.5s ease-out 0.6s both;
+        }
+
+        .hero-emoji-row {
+            font-size: 1.8rem;
+            letter-spacing: 10px;
+            margin-top: 1.5rem;
+            animation: fadeInUp 1.5s ease-out 0.9s both;
+        }
+
+        .hero-quote {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: rgba(255,255,255,0.8);
+            margin-top: 1rem;
+            font-style: italic;
+            animation: fadeInUp 1.5s ease-out 1.2s both;
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Carousel navigation dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            border: 2px solid rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .carousel-dot.active {
+            background: #fff;
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* Carousel arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 15;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.prev { left: 20px; }
+        .carousel-arrow.next { right: 20px; }
+
+        /* Hero stickers */
+        .hero-sticker {
+            position: absolute;
+            z-index: 12;
+            animation: stickerBounce 4s ease-in-out infinite;
+        }
+
+        .hero-sticker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 0 3px #f48fb1, 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes stickerBounce {
+            0%, 100% { transform: var(--sticker-transform, rotate(0deg)) translateY(0); }
+            50% { transform: var(--sticker-transform, rotate(0deg)) translateY(-12px); }
+        }
+
+        .hero-sticker-1 {
+            width: clamp(90px, 14vw, 160px);
+            height: clamp(90px, 14vw, 160px);
+            bottom: 15%;
+            left: 5%;
+            --sticker-transform: rotate(-12deg);
+        }
+
+        .hero-sticker-2 {
+            width: clamp(70px, 11vw, 120px);
+            height: clamp(70px, 11vw, 120px);
+            top: 18%;
+            right: 6%;
+            --sticker-transform: rotate(10deg);
+            animation-delay: 1.5s;
+        }
+
+        .hero-sticker .sticker-badge {
+            position: absolute;
+            bottom: -5px; right: -5px;
+            font-size: 1.8rem;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator .arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid rgba(255,255,255,0.6);
+            border-bottom: 2px solid rgba(255,255,255,0.6);
+            transform: rotate(45deg);
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Hero wave bottom */
+        .hero-wave {
+            position: absolute;
+            bottom: -1px; left: 0; right: 0;
+            z-index: 5;
+        }
+
+        .hero-wave svg {
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+
+        /* ═══════════════════════════════════════════
+           EMOJI TICKER
+           ═══════════════════════════════════════════ */
+        .emoji-ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0.8rem 0;
+            background: linear-gradient(90deg, #fce4ec, #f3e5f5, #e8eaf6, #f3e5f5, #fce4ec);
+            position: relative;
+            z-index: 5;
+        }
+
+        .emoji-ticker-inner {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+            font-size: 1.6rem;
+            letter-spacing: 12px;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION STYLES
+           ═══════════════════════════════════════════ */
+        .section {
+            position: relative;
+            z-index: 2;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #880e4f;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .section-line {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f48fb1, #ce93d8, #f48fb1, transparent);
+            margin: 0 auto 0.5rem;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #ad1457;
+            opacity: 0.7;
+        }
+
+        .section-divider {
+            text-align: center;
+            font-size: 1.8rem;
+            letter-spacing: 12px;
+            padding: 1.5rem 0;
+            opacity: 0.5;
+            animation: gentleSway 4s ease-in-out infinite alternate;
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT / POET SECTION
+           ═══════════════════════════════════════════ */
+        .poet-section {
+            background: linear-gradient(180deg, #fdf2f8, #fce4ec, #fdf2f8);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background circles */
+        .poet-section .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
+        .bg-circle-1 { width: 400px; height: 400px; background: #f48fb1; top: -100px; left: -100px; }
+        .bg-circle-2 { width: 300px; height: 300px; background: #ce93d8; bottom: -80px; right: -80px; }
+        .bg-circle-3 { width: 200px; height: 200px; background: #81d4fa; top: 50%; right: 10%; }
+
+        .poet-card {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem 4rem;
+            border: 1px solid rgba(244,143,177,0.2);
+            box-shadow: 0 20px 60px rgba(136,14,79,0.06);
+            position: relative;
+        }
+
+        .poet-img-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .poet-img-container img {
+            width: clamp(160px, 25vw, 250px);
+            height: clamp(160px, 25vw, 250px);
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 
+                0 0 0 4px #f48fb1,
+                0 0 0 8px #fce4ec,
+                0 0 30px rgba(244,143,177,0.4),
+                0 0 60px rgba(233,30,99,0.15);
+            animation: imgGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes imgGlow {
+            0% { box-shadow: 0 0 0 4px #f48fb1, 0 0 0 8px #fce4ec, 0 0 30px rgba(244,143,177,0.4); }
+            100% { box-shadow: 0 0 0 4px #ce93d8, 0 0 0 8px #f3e5f5, 0 0 40px rgba(206,147,216,0.5); }
+        }
+
+        .poet-img-ring {
+            position: absolute;
+            top: -15px; left: -15px;
+            right: -15px; bottom: -15px;
+            border: 2px dashed #f48fb1;
+            border-radius: 50%;
+            animation: ringRotate 20s linear infinite;
+        }
+
+        .poet-img-ring-2 {
+            position: absolute;
+            top: -25px; left: -25px;
+            right: -25px; bottom: -25px;
+            border: 1px dotted #ce93d8;
+            border-radius: 50%;
+            animation: ringRotate 30s linear infinite reverse;
+        }
+
+        @keyframes ringRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .poet-img-emojis span {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: orbitEmoji 8s linear infinite;
+        }
+
+        .poet-img-emojis span:nth-child(1) { top: -20px; left: 50%; animation-delay: 0s; }
+        .poet-img-emojis span:nth-child(2) { top: 50%; right: -25px; animation-delay: 2s; }
+        .poet-img-emojis span:nth-child(3) { bottom: -20px; left: 50%; animation-delay: 4s; }
+        .poet-img-emojis span:nth-child(4) { top: 50%; left: -25px; animation-delay: 6s; }
+
+        @keyframes orbitEmoji {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .poet-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: #880e4f;
+            margin-bottom: 0.5rem;
+        }
+
+        .poet-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #ad1457;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            max-width: 400px;
+        }
+
+        .poet-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .poet-stat {
+            text-align: center;
+        }
+
+        .poet-stat-num {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.8rem;
+            color: #880e4f;
+        }
+
+        .poet-stat-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ad1457;
+            opacity: 0.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           POEM GALLERY / THEME IMAGES
+           ═══════════════════════════════════════════ */
+        .theme-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .theme-img {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            box-shadow: 0 10px 30px rgba(136,14,79,0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .theme-img:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(136,14,79,0.18);
+        }
+
+        .theme-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .theme-img:hover img {
+            transform: scale(1.08);
+        }
+
+        .theme-img .theme-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 2rem 1rem 1rem;
+            background: linear-gradient(transparent, rgba(136,14,79,0.6));
+            color: #fff;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* ═══════════════════════════════════════════
+           INLINE STICKER ROWS
+           ═══════════════════════════════════════════ */
+        .inline-sticker-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .inline-sticker {
+            width: clamp(70px, 12vw, 110px);
+            height: clamp(70px, 12vw, 110px);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 2px #f48fb1, 0 6px 20px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease;
+            animation: stickerBounce 4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        .inline-sticker:nth-child(odd) { --sticker-transform: rotate(-6deg); }
+        .inline-sticker:nth-child(even) { --sticker-transform: rotate(6deg); animation-delay: 1s; }
+
+        .inline-sticker:hover {
+            transform: scale(1.2) rotate(0deg) !important;
+        }
+
+        .inline-sticker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ═══════════════════════════════════════════
+           POEM CARDS
+           ═══════════════════════════════════════════ */
+        .poem-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(244,143,177,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(206,147,216,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,224,178,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .poem-card {
+            max-width: 880px;
+            margin: 0 auto 5rem;
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: clamp(2rem, 5vw, 4rem);
+            position: relative;
+            border: 2px solid rgba(244,143,177,0.25);
+            box-shadow: 
+                0 25px 70px rgba(136,14,79,0.08),
+                0 0 0 1px rgba(255,255,255,0.6) inset,
+                0 0 100px rgba(244,143,177,0.08);
+            overflow: hidden;
+        }
+
+        .poem-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(244,143,177,0.04), transparent, rgba(206,147,216,0.04), transparent);
+            animation: cardShine 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Corner florals */
+        .poem-card .corner-decor {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.3;
+            animation: gentleSway 3s ease-in-out infinite alternate;
+        }
+        .corner-decor.tl { top: 12px; left: 16px; }
+        .corner-decor.tr { top: 12px; right: 16px; transform: scaleX(-1); }
+        .corner-decor.bl { bottom: 12px; left: 16px; transform: scaleY(-1); }
+        .corner-decor.br { bottom: 12px; right: 16px; transform: scale(-1); }
+
+        /* Poem theme image banner */
+        .poem-theme-banner {
+            width: calc(100% + clamp(4rem, 10vw, 8rem));
+            margin: calc(-1 * clamp(2rem, 5vw, 4rem));
+            margin-bottom: 2rem;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 28px 28px 0 0;
+            position: relative;
+        }
+
+        .poem-theme-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.65) saturate(1.1);
+        }
+
+        .poem-theme-banner .banner-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(transparent 30%, rgba(255,255,255,0.9) 100%);
+        }
+
+        .poem-theme-banner .banner-text {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #880e4f;
+            opacity: 0.6;
+        }
+
+        .poem-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #880e4f;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poem-title-underline {
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f48fb1, #ce93d8, #f48fb1, transparent);
+            margin: 0 auto 0.5rem;
+            border-radius: 2px;
+        }
+
+        .poem-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            color: #ad1457;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            opacity: 0.7;
+        }
+
+        .poem-number {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 0.8rem;
+            color: #f48fb1;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Stanzas */
+        .stanza {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 2rem;
+            padding: 1rem 1.5rem;
+            border-left: 3px solid transparent;
+            border-image: linear-gradient(to bottom, #f48fb1, #ce93d8, #f48fb1) 1;
+            transition: all 0.4s ease;
+        }
+
+        .stanza:hover {
+            background: rgba(244,143,177,0.05);
+            border-radius: 0 12px 12px 0;
+            transform: translateX(5px);
+        }
+
+        .stanza p {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            line-height: 2;
+            color: #4a2040;
+            letter-spacing: 0.5px;
+        }
+
+        .stanza p.indent { padding-left: 2rem; }
+
+        .poem-emphasis {
+            font-family: 'Dancing Script', cursive !important;
+            font-size: clamp(1.3rem, 2.8vw, 1.9rem) !important;
+            color: #880e4f !important;
+            text-align: center;
+            font-weight: 700;
+            padding: 0.5rem 0;
+        }
+
+        .poem-highlight {
+            font-family: 'Sacramento', cursive !important;
+            font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+            color: #ad1457 !important;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(136,14,79,0.15);
+        }
+
+        .poem-bold {
+            font-family: 'Satisfy', cursive !important;
+            font-size: clamp(1.3rem, 3vw, 1.8rem) !important;
+            font-weight: 700;
+            color: #6a1b9a !important;
+        }
+
+        .poem-final {
+            font-family: 'Cinzel Decorative', cursive !important;
+            font-size: clamp(1.3rem, 3vw, 2rem) !important;
+            font-weight: 700;
+            color: #880e4f !important;
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 2px 3px 8px rgba(136,14,79,0.15);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .poem-final::before { content: '✨ '; }
+        .poem-final::after { content: ' ✨'; }
+
+        /* Poem stickers */
+        .poem-sticker {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .poem-sticker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 2px #f48fb1, 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .poem-sticker-1 {
+            width: clamp(65px, 10vw, 100px);
+            height: clamp(65px, 10vw, 100px);
+            top: 200px;
+            right: -15px;
+            transform: rotate(15deg);
+            animation: stickerFloat 5s ease-in-out infinite;
+        }
+
+        .poem-sticker-2 {
+            width: clamp(55px, 8vw, 85px);
+            height: clamp(55px, 8vw, 85px);
+            bottom: 80px;
+            left: -12px;
+            transform: rotate(-10deg);
+            animation: stickerFloat 5s ease-in-out infinite 2s;
+        }
+
+        @keyframes stickerFloat {
+            0%, 100% { transform: var(--float-transform, rotate(15deg)) translateY(0); }
+            50% { transform: var(--float-transform, rotate(15deg)) translateY(-8px); }
+        }
+
+        /* ═══════════════════════════════════════════
+           VINE DECORATIONS
+           ═══════════════════════════════════════════ */
+        .vine-decoration {
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+            opacity: 0.5;
+        }
+
+        .vine-decoration svg {
+            width: clamp(200px, 50vw, 400px);
+            height: 60px;
+        }
+
+        /* ═══════════════════════════════════════════
+           QUOTE RIBBON
+           ═══════════════════════════════════════════ */
+        .quote-ribbon {
+            background: linear-gradient(135deg, #880e4f, #ad1457, #6a1b9a, #880e4f);
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .quote-ribbon::before, .quote-ribbon::after {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
+        }
+
+        .quote-ribbon::before { top: -150px; left: -100px; }
+        .quote-ribbon::after { bottom: -150px; right: -100px; }
+
+        .quote-ribbon blockquote {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .quote-ribbon .quote-emojis {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            letter-spacing: 8px;
+        }
+
+        /* ═══════════════════════════════════════════
+           TYPEWRITER TEXT
+           ═══════════════════════════════════════════ */
+        .typewriter {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #880e4f;
+            text-align: center;
+            padding: 2rem;
+            min-height: 3rem;
+        }
+
+        .typewriter .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: #f48fb1;
+            margin-left: 2px;
+            animation: blink 0.7s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════
+           BUTTERFLY ACCENTS
+           ═══════════════════════════════════════════ */
+        .butterfly {
+            position: fixed;
+            font-size: 1.8rem;
+            z-index: 5;
+            pointer-events: none;
+            animation: butterflyFly 18s ease-in-out infinite;
+        }
+
+        @keyframes butterflyFly {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30vw, -20vh) rotate(15deg); }
+            50% { transform: translate(60vw, 10vh) rotate(-10deg); }
+            75% { transform: translate(20vw, 30vh) rotate(20deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        .footer {
+            background: linear-gradient(135deg, #880e4f, #ad1457, #6a1b9a);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23fdf2f8' d='M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,16C840,11,960,21,1080,32C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'/%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .footer-sticker {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255,255,255,0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin: 0 auto 1.5rem;
+        }
+
+        .footer-sticker img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            margin-top: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-emojis {
+            font-size: 1.3rem;
+            letter-spacing: 8px;
+            margin-top: 1rem;
+        }
+
+        .footer-credit {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            margin-top: 2rem;
+            opacity: 0.6;
+        }
+
+        .footer-hearts {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            opacity: 0.4;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLLBAR
+           ═══════════════════════════════════════════ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fce4ec; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#f48fb1, #ce93d8);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(#ec407a, #ab47bc);
+        }
+
+        /* ═══════════════════════════════════════════
+           BACKGROUND PATTERN
+           ═══════════════════════════════════════════ */
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(244,143,177,0.07) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(206,147,216,0.07) 0%, transparent 40%),
+                radial-gradient(circle at 50% 10%, rgba(255,183,77,0.04) 0%, transparent 30%),
+                radial-gradient(circle at 10% 90%, rgba(129,212,250,0.04) 0%, transparent 30%);
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL REVEAL
+           ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 1rem; gap: 1rem; }
+            .nav-links { gap: 0.8rem; }
+            .nav-links a { font-size: 0.7rem; letter-spacing: 1px; }
+
+            .hero-sticker-1, .hero-sticker-2 { display: none; }
+
+            .carousel-arrow { width: 36px; height: 36px; font-size: 1.1rem; }
+            .carousel-arrow.prev { left: 10px; }
+            .carousel-arrow.next { right: 10px; }
+
+            .stanza { padding: 0.8rem 1rem; }
+
+            .poem-sticker-1, .poem-sticker-2 { display: none; }
+
+            .floral-border-left, .floral-border-right { display: none; }
+
+            .poem-card {
+                margin: 0 0.5rem 4rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .poem-theme-banner { height: 150px; }
+
+            .poet-card { padding: 2rem 1.5rem; }
+            .poet-stats { gap: 1rem; }
+
+            .theme-gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+            .quote-ribbon { padding: 2rem 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+            .theme-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ PRELOADER ═══════ -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-text">Loading her poetry...</div>
+        <div class="preloader-flowers">🌸🌷🌹🌺</div>
+    </div>
+
+    <!-- Background Pattern -->
+    <div class="bg-pattern"></div>
+
+    <!-- Floating Emojis -->
+    <div class="floating-emojis" id="floatingEmojis"></div>
+
+    <!-- Floral side borders -->
+    <div class="floral-border-left">
+        <span>🌸</span><span>🌿</span><span>🌷</span><span>🦋</span>
+        <span>🌺</span><span>🍃</span><span>🌹</span><span>🌻</span>
+        <span>💮</span><span>🪷</span><span>🌼</span><span>🌸</span>
+    </div>
+    <div class="floral-border-right">
+        <span>🌷</span><span>🍂</span><span>🌺</span><span>🦋</span>
+        <span>🌸</span><span>🌿</span><span>🌹</span><span>💐</span>
+        <span>🪻</span><span>🌻</span><span>💮</span><span>🌷</span>
+    </div>
+
+    <!-- Butterfly accents -->
+    <div class="butterfly" style="top: 20%; left: 10%;">🦋</div>
+    <div class="butterfly" style="top: 60%; left: 70%; animation-delay: -5s; font-size: 1.4rem;">🦋</div>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">🌸 Jhanvi Singh</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#poems">Poems</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO CAROUSEL SECTION
+         ═══════════════════════════════════════ -->
+    <section class="hero" id="home">
+        <div class="carousel" id="carousel">
+            <div class="carousel-slide active">
+                <img src="images/hero_book.jpg" alt="Poetry Book with Flowers">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="carousel-slide">
+                <img src="images/hero_empowerment.jpg" alt="Girl Empowerment">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="carousel-slide">
+                <img src="images/hero_growth.jpg" alt="Watch Me Grow">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="carousel-slide">
+                <img src="images/hero_floral.jpg" alt="Floral Garden">
+                <div class="slide-overlay"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content Overlay -->
+        <div class="hero-content">
+            <div class="hero-badge">✦ Poetry ・ Passion ・ Power ✦</div>
+            <h1 class="hero-title">Jhanvi Singh</h1>
+            <p class="hero-subtitle">her poetry garden</p>
+            <div class="hero-emoji-row">🌸 🌷 🌹 🌺 🦋 🌻 🌼 💐</div>
+            <p class="hero-quote">"She is some magic, some chaos, and a bit of poetry"</p>
+        </div>
+
+        <!-- Sticker Photos on Hero -->
+        <div class="hero-sticker hero-sticker-1">
+            <img src="images/photo1.jpg" alt="Poet">
+            <span class="sticker-badge">🌸</span>
+        </div>
+        <div class="hero-sticker hero-sticker-2">
+            <img src="images/photo2.jpg" alt="Poet">
+            <span class="sticker-badge">🦋</span>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <div class="carousel-arrow prev" id="prevBtn">❮</div>
+        <div class="carousel-arrow next" id="nextBtn">❯</div>
+        <div class="carousel-dots" id="carouselDots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+            <div class="carousel-dot" data-index="3"></div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>scroll</span>
+            <div class="arrow"></div>
+        </div>
+
+        <!-- Wave bottom -->
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path fill="#fdf2f8" d="M0,60L48,55C96,50,192,40,288,42C384,44,480,58,576,62C672,66,768,60,864,50C960,40,1056,26,1152,24C1248,22,1344,32,1392,37L1440,42L1440,100L0,100Z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Emoji Ticker -->
+    <div class="emoji-ticker">
+        <div class="emoji-ticker-inner">
+            🌸🌷🌹🌺🌻🌼💐🪷🦋🍃✨💫🩷💖🌸🌷🌹🌺🌻🌼💐🪷🦋🍃✨💫🩷💖🌸🌷🌹🌺🌻🌼💐🪷🦋🍃✨💫🩷💖🌸🌷🌹🌺🌻🌼💐🪷🦋🍃✨💫🩷💖
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         POET SECTION
+         ═══════════════════════════════════════ -->
+    <section class="section poet-section" id="about">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
+
+        <div class="poet-card reveal">
+            <div class="poet-img-container">
+                <div class="poet-img-ring-2"></div>
+                <div class="poet-img-ring"></div>
+                <img src="images/photo1.jpg" alt="The Poet">
+                <div class="poet-img-emojis">
+                    <span>🌸</span><span>🌷</span><span>🌹</span><span>🌺</span>
+                </div>
+            </div>
+            <h2 class="poet-name">~ Jhanvi Singh ~</h2>
+            <p class="poet-tagline">✨ A voice for every girl, a force of nature ✨</p>
+            <div class="poet-stats">
+                <div class="poet-stat">
+                    <div class="poet-stat-num">2</div>
+                    <div class="poet-stat-label">Poems</div>
+                </div>
+                <div class="poet-stat">
+                    <div class="poet-stat-num">∞</div>
+                    <div class="poet-stat-label">Passion</div>
+                </div>
+                <div class="poet-stat">
+                    <div class="poet-stat-num">1</div>
+                    <div class="poet-stat-label">Mission</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typewriter -->
+    <div class="typewriter" id="typewriter"><span class="cursor"></span></div>
+
+    <!-- Section divider -->
+    <div class="section-divider">🌸 🌿 🌷 🦋 🌺 🍃 🌹 🌸</div>
+
+    <!-- Vine -->
+    <div class="vine-decoration">
+        <svg viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 30 Q50 10 100 30 T200 30 T300 30 T400 30" stroke="#f48fb1" stroke-width="2" fill="none" stroke-dasharray="5,5">
+                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <circle cx="50" cy="20" r="5" fill="#f48fb1" opacity="0.5"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="150" cy="35" r="4" fill="#ce93d8" opacity="0.5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite" begin="1s"/></circle>
+            <circle cx="250" cy="22" r="5" fill="#f48fb1" opacity="0.5"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" begin="2s"/></circle>
+            <circle cx="350" cy="35" r="4" fill="#ce93d8" opacity="0.5"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite" begin="0.5s"/></circle>
+        </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         THEME GALLERY
+         ═══════════════════════════════════════ -->
+    <section class="section" id="gallery">
+        <div class="section-header reveal">
+            <h2>✨ Poetic Inspirations</h2>
+            <div class="section-line"></div>
+            <p>images that speak her words</p>
+        </div>
+
+        <div class="theme-gallery">
+            <div class="theme-img reveal-left">
+                <img src="images/hero_growth.jpg" alt="Growth">
+                <div class="theme-label">🌱 Watch Me Grow</div>
+            </div>
+            <div class="theme-img reveal">
+                <img src="images/hero_empowerment.jpg" alt="Empowerment">
+                <div class="theme-label">🦋 She is Force of Nature</div>
+            </div>
+            <div class="theme-img reveal-right">
+                <img src="images/hero_floral.jpg" alt="Beauty">
+                <div class="theme-label">🌸 Magic & Poetry</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticker row -->
+    <div class="inline-sticker-row">
+        <div class="inline-sticker"><img src="images/photo2.jpg" alt="Poet"></div>
+        <span style="font-size:2.2rem;">🌸</span>
+        <div class="inline-sticker"><img src="images/photo1.jpg" alt="Poet"></div>
+        <span style="font-size:2.2rem;">🌷</span>
+        <div class="inline-sticker"><img src="images/photo2.jpg" alt="Poet"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         QUOTE RIBBON
+         ═══════════════════════════════════════ -->
+    <div class="quote-ribbon">
+        <blockquote>
+            "She hasn't even opened her eyes yet, and impose with all regret — Is that her fault?"
+        </blockquote>
+        <div class="quote-emojis">🌸 🌷 🌹 🌺 🦋</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         POEM 1: "WATCH ME GROW"
+         ═══════════════════════════════════════ -->
+    <section class="section poem-section" id="poems">
+        <div class="section-header reveal">
+            <h2>🌸 Her Poems 🌸</h2>
+            <div class="section-line"></div>
+            <p>verses penned from the soul</p>
+        </div>
+
+        <div class="poem-card reveal">
+            <!-- Theme banner -->
+            <div class="poem-theme-banner">
+                <img src="images/hero_empowerment.jpg" alt="Empowerment">
+                <div class="banner-overlay"></div>
+                <div class="banner-text">✦ inspired by every girl's journey ✦</div>
+            </div>
+
+            <!-- Corner florals -->
+            <span class="corner-decor tl">🌸</span>
+            <span class="corner-decor tr">🌷</span>
+            <span class="corner-decor bl">🌺</span>
+            <span class="corner-decor br">🌹</span>
+
+            <!-- Floating stickers -->
+            <div class="poem-sticker poem-sticker-1">
+                <img src="images/photo2.jpg" alt="Poet">
+            </div>
+            <div class="poem-sticker poem-sticker-2">
+                <img src="images/photo1.jpg" alt="Poet">
+            </div>
+
+            <p class="poem-number">🌸 poem one 🌸</p>
+            <h2 class="poem-title">"Watch Me Grow"</h2>
+            <div class="poem-title-underline"></div>
+            <p class="poem-subtitle">~ a voice for every girl ~</p>
+
+            <div class="stanza">
+                <p>It's a festive atmosphere,</p>
+                <p>~ Cause there is a baby to be born;</p>
+                <p class="indent">Family members gathering and cheering</p>
+                <p class="indent">For arrival of new member of clan,</p>
+            </div>
+
+            <div class="stanza">
+                <p>With sweets and whatnot at ready</p>
+                <p>Have thought the names already</p>
+                <p>Flowers on the gate!</p>
+                <p>And they no longer can wait</p>
+            </div>
+
+            <div class="stanza">
+                <p>However,</p>
+                <p class="indent">That laughter and happiness fade</p>
+                <p class="indent">And all those colors lose their shades!</p>
+                <p class="poem-emphasis">When it transpires to be a "Baby girl"</p>
+                <p>Tragedy of her life begins with her first breath</p>
+            </div>
+
+            <div class="stanza">
+                <p>She hasn't even opened her eyes yet</p>
+                <p>And impose with all regret</p>
+                <p>Let me ask the world</p>
+                <p>Is that 'her fault'</p>
+                <p class="poem-highlight">'That she is born a girl'</p>
+            </div>
+
+            <div class="stanza">
+                <p>Her tussle starts the day — she is born</p>
+                <p>With all the struggles along</p>
+                <p>Traditions continues to clip her wing</p>
+                <p>She is both a <span class="poem-bold">'Me'</span> and a <span class="poem-bold">'We'</span></p>
+            </div>
+
+            <div class="stanza">
+                <p>Her life revolves around —</p>
+                <p>Criticism, seal of approval, limit, suppress..</p>
+                <p>Isn't she have feelings to express</p>
+                <p>Or just an immortal without address</p>
+            </div>
+
+            <div class="stanza" style="border-image: linear-gradient(to bottom, #880e4f, #6a1b9a, #880e4f) 1;">
+                <p style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem;">But —</p>
+                <p>She is some magic, some chaos and a bit of poetry</p>
+                <p>She is force of nature,</p>
+                <p>That comes into the world saying:</p>
+                <p class="poem-final">"WATCH ME GROW"!</p>
+            </div>
+        </div>
+
+        <!-- Divider between poems -->
+        <div class="section-divider">🌷 🍃 🌸 🦋 🌹 🌿 🌺 🌷</div>
+
+        <!-- Sticker row between poems -->
+        <div class="inline-sticker-row">
+            <span style="font-size:2rem;">🌺</span>
+            <div class="inline-sticker"><img src="images/photo1.jpg" alt="Poet"></div>
+            <span style="font-size:2rem;">✨</span>
+            <div class="inline-sticker"><img src="images/photo2.jpg" alt="Poet"></div>
+            <span style="font-size:2rem;">🌷</span>
+        </div>
+
+        <!-- ═══════════════════════════════════════
+             POEM 2: PLACEHOLDER
+             ═══════════════════════════════════════ -->
+        <div class="poem-card reveal">
+            <!-- Theme banner -->
+            <div class="poem-theme-banner">
+                <img src="images/hero_growth.jpg" alt="Growth">
+                <div class="banner-overlay"></div>
+                <div class="banner-text">✦ awaiting her next verses ✦</div>
+            </div>
+
+            <!-- Corner florals -->
+            <span class="corner-decor tl">🌷</span>
+            <span class="corner-decor tr">🌸</span>
+            <span class="corner-decor bl">🌹</span>
+            <span class="corner-decor br">🌺</span>
+
+            <!-- Floating stickers -->
+            <div class="poem-sticker poem-sticker-1">
+                <img src="images/photo1.jpg" alt="Poet">
+            </div>
+            <div class="poem-sticker poem-sticker-2">
+                <img src="images/photo2.jpg" alt="Poet">
+            </div>
+
+            <p class="poem-number">🌷 poem two 🌷</p>
+            <h2 class="poem-title">"Coming Soon"</h2>
+            <div class="poem-title-underline"></div>
+            <p class="poem-subtitle">~ awaiting her next masterpiece ~</p>
+
+            <div class="stanza" style="text-align: center; padding: 3rem;">
+                <p class="poem-emphasis" style="font-size: 1.5rem !important;">🌸 This space is reserved for her second poem 🌸</p>
+                <p style="font-family: 'Caveat', cursive; font-size: 1.3rem; color: #ad1457; margin-top: 1rem;">
+                    Share the second poem and it will bloom here ✨
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote ribbon 2 -->
+    <div class="quote-ribbon" style="background: linear-gradient(135deg, #6a1b9a, #ad1457, #880e4f, #6a1b9a);">
+        <blockquote>
+            "She is force of nature, that comes into the world saying: Watch Me Grow!"
+        </blockquote>
+        <div class="quote-emojis">✨ 💫 🌟 ⭐ 💖</div>
+    </div>
+
+    <!-- Final sticker row -->
+    <div class="inline-sticker-row" style="padding: 3rem 2rem;">
+        <div class="inline-sticker" style="width: 100px; height: 100px;"><img src="images/photo2.jpg" alt="Poet"></div>
+        <span style="font-size:3rem;">💐</span>
+        <div class="inline-sticker" style="width: 110px; height: 110px;"><img src="images/photo1.jpg" alt="Poet"></div>
+        <span style="font-size:3rem;">🌸</span>
+        <div class="inline-sticker" style="width: 100px; height: 100px;"><img src="images/photo2.jpg" alt="Poet"></div>
+    </div>
+
+    <!-- Emoji Ticker bottom -->
+    <div class="emoji-ticker">
+        <div class="emoji-ticker-inner">
+            ✨💫🌟⭐🌸🌷🌹🌺🌻🌼💐🪷🦋🍃🩷💖✨💫🌟⭐🌸🌷🌹🌺🌻🌼💐🪷🦋🍃🩷💖✨💫🌟⭐🌸🌷🌹🌺🌻🌼💐🪷🦋🍃🩷💖✨💫🌟⭐🌸🌷🌹🌺🌻🌼💐🪷🦋🍃🩷💖
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-sticker">
+            <img src="images/photo1.jpg" alt="Poet">
+        </div>
+        <p class="footer-text">
+            "She is some magic, some chaos, and a bit of poetry — Watch Me Grow!"
+        </p>
+        <p class="footer-emojis">🌸 🌷 🌹 🌺 🦋 ✨ 💫 🌻 🌼 💐</p>
+        <p class="footer-credit">crafted with 💖 for Jhanvi Singh</p>
+        <p class="footer-hearts">🩷🩷🩷🩷🩷</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+         JAVASCRIPT
+         ═══════════════════════════════════════ -->
+    <script>
+        // ── Preloader ──
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1800);
+        });
+
+        // ── Carousel ──
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        let carouselInterval;
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetCarousel() {
+            clearInterval(carouselInterval);
+            startCarousel();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetCarousel(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetCarousel(); });
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.index));
+                resetCarousel();
+            });
+        });
+
+        startCarousel();
+
+        // ── Navbar scroll ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // ── Floating Emojis ──
+        const emojiList = ['🌸', '🌷', '🌹', '🌺', '🌻', '🌼', '💮', '🪷', '🦋', '🍃', '✨', '💫', '🌿', '💐', '🪻', '🏵️', '🍂', '⭐', '💖', '🩷'];
+        const container = document.getElementById('floatingEmojis');
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement('span');
+            emoji.classList.add('emoji-float');
+            emoji.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            emoji.style.animationDuration = (Math.random() * 12 + 8) + 's';
+            emoji.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 22000);
+        }
+
+        for (let i = 0; i < 15; i++) setTimeout(createFloatingEmoji, i * 600);
+        setInterval(createFloatingEmoji, 1800);
+
+        // ── Sparkle cursor trail ──
+        const sparkleEmojis = ['✨', '💫', '⭐', '🌸', '💖', '🩷'];
+        let lastSparkle = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSparkle < 100) return;
+            lastSparkle = now;
+
+            const sparkle = document.createElement('span');
+            sparkle.classList.add('sparkle');
+            sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+
+        // ── Scroll reveal ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+        // ── Flower burst on click ──
+        document.addEventListener('click', (e) => {
+            const flowers = ['🌸', '🌷', '🌹', '🌺', '🌻', '🌼', '💮', '✨', '💖'];
+            for (let i = 0; i < 8; i++) {
+                const flower = document.createElement('span');
+                flower.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;font-size:1.4rem;pointer-events:none;z-index:9999;transition:all 0.9s ease-out;`;
+                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                const angle = (Math.PI * 2 * i) / 8;
+                const distance = 40 + Math.random() * 50;
+                document.body.appendChild(flower);
+                requestAnimationFrame(() => {
+                    flower.style.transform = `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) scale(0) rotate(${Math.random()*360}deg)`;
+                    flower.style.opacity = '0';
+                });
+                setTimeout(() => flower.remove(), 1000);
+            }
+        });
+
+        // ── Typewriter effect ──
+        const typewriterEl = document.getElementById('typewriter');
+        const phrases = [
+            '🌸 "She is some magic, some chaos, and a bit of poetry" 🌸',
+            '🦋 "Watch Me Grow!" 🦋',
+            '🌹 "She is force of nature" 🌹',
+            '✨ "Is that her fault, that she is born a girl?" ✨',
+            '🌷 "Traditions continues to clip her wing" 🌷',
+            '💖 "She is both a Me and a We" 💖'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typewrite() {
+            const current = phrases[phraseIndex];
+            const cursorSpan = '<span class="cursor"></span>';
+
+            if (!isDeleting) {
+                typewriterEl.innerHTML = current.substring(0, charIndex + 1) + cursorSpan;
+                charIndex++;
+                if (charIndex === current.length) {
+                    isDeleting = true;
+                    setTimeout(typewrite, 2500);
+                    return;
+                }
+            } else {
+                typewriterEl.innerHTML = current.substring(0, charIndex) + cursorSpan;
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+
+            setTimeout(typewrite, isDeleting ? 30 : 60);
+        }
+
+        setTimeout(typewrite, 2500);
+
+        // ── Parallax on hero stickers ──
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.querySelectorAll('.hero-sticker').forEach((el, i) => {
+                const factor = i === 0 ? 1 : -1;
+                el.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

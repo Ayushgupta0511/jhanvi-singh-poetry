@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 488" fill="none">
+  <defs>
+    <linearGradient id="scanGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-2px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes scanDown {
+      0% { transform: translateY(34px); opacity: 0; }
+      5% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(468px); opacity: 0; }
+    }
+
+    .line {
+      font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", "Courier New", monospace;
+      font-size: 11px;
+      opacity: 0;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+
+    .cyan   { fill: #00D4FF; }
+    .green  { fill: #3FB950; }
+    .dim    { fill: #6E7681; }
+    .purple { fill: #BC8CFF; }
+    .gold   { fill: #FFCA28; }
+
+    .l0 { animation-delay: 0.00s; }
+    .l1 { animation-delay: 0.08s; }
+    .l2 { animation-delay: 0.16s; }
+    .l3 { animation-delay: 0.24s; }
+    .l4 { animation-delay: 0.32s; }
+    .l5 { animation-delay: 0.40s; }
+    .l6 { animation-delay: 0.48s; }
+    .l7 { animation-delay: 0.56s; }
+    .l8 { animation-delay: 0.64s; }
+    .l9 { animation-delay: 0.72s; }
+    .l10 { animation-delay: 0.80s; }
+    .l11 { animation-delay: 0.88s; }
+    .l12 { animation-delay: 0.96s; }
+    .l13 { animation-delay: 1.04s; }
+    .l14 { animation-delay: 1.12s; }
+    .l15 { animation-delay: 1.20s; }
+    .l16 { animation-delay: 1.28s; }
+    .l17 { animation-delay: 1.36s; }
+    .l18 { animation-delay: 1.44s; }
+    .l19 { animation-delay: 1.52s; }
+    .l20 { animation-delay: 1.60s; }
+    .l21 { animation-delay: 1.68s; }
+    .l22 { animation-delay: 1.76s; }
+    .l23 { animation-delay: 1.84s; }
+    .l24 { animation-delay: 1.92s; }
+    .l25 { animation-delay: 2.00s; }
+    .l26 { animation-delay: 2.08s; }
+    .l27 { animation-delay: 2.16s; }
+    .l28 { animation-delay: 2.24s; }
+    .l29 { animation-delay: 2.32s; }
+    .l30 { animation-delay: 2.40s; }
+    .l31 { animation-delay: 2.48s; }
+
+    .cursor {
+      fill: #3FB950;
+      animation: blink 1s step-end infinite;
+      animation-delay: 3.0s;
+      opacity: 0;
+    }
+
+    .scan-line {
+      animation: scanDown 2.7s ease-in-out forwards;
+      animation-delay: 0.1s;
+    }
+
+    .header-text {
+      font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+      font-size: 9px;
+      fill: #8B949E;
+    }
+  </style>
+
+  <!-- Terminal Window -->
+  <rect x="1" y="1" width="220" height="486" rx="10" fill="none" stroke="#7C3AED" stroke-width="0.5" opacity="0.3"/>
+  <rect width="222" height="488" rx="10" fill="#0D1117"/>
+  <rect width="222" height="488" rx="10" fill="none" stroke="#30363D" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="1" y="1" width="220" height="32" rx="10" fill="#161B22"/>
+  <rect x="1" y="20" width="220" height="14" fill="#161B22"/>
+  <line x1="0" y1="34" x2="222" y2="34" stroke="#30363D" stroke-width="0.5"/>
+  <circle cx="16" cy="17" r="4.5" fill="#FF5F56"/>
+  <circle cx="30" cy="17" r="4.5" fill="#FFBD2E"/>
+  <circle cx="44" cy="17" r="4.5" fill="#27C93F"/>
+  <text x="111" y="20" text-anchor="middle" class="header-text">portrait.sh — terminal</text>
+
+  <!-- Scan Line -->
+  <rect class="scan-line" x="4" y="34" width="214" height="6" rx="1" fill="url(#scanGrad)" opacity="0"/>
+
+  <text class="line cyan l0" x="14" y="58" xml:space="preserve">zXYJYUJJJCQ000mmOww00LUYcxxf</text>
+  <text class="line cyan l1" x="14" y="72" xml:space="preserve">JCL0LCLQQ0ZpbpdpaohpOQCUcnxf</text>
+  <text class="line cyan l2" x="14" y="86" xml:space="preserve">Q0ZmwOQOOmpL(iI:}nQhhOLJzuxt</text>
+  <text class="line cyan l3" x="14" y="100" xml:space="preserve">0ZwqqmOOwZi        i\CmJzuj/</text>
+  <text class="line cyan l4" x="14" y="114" xml:space="preserve">JOwwOOZmw&gt;           `jOXnj/</text>
+  <text class="line cyan l5" x="14" y="128" xml:space="preserve">zCO0CL0qU           .  funf\</text>
+  <text class="line cyan l6" x="14" y="142" xml:space="preserve">vzUUJCCmv.  .&quot;:.       &apos;fxt|</text>
+  <text class="line cyan l7" x="14" y="156" xml:space="preserve">xrncXYJ0x&gt;-&apos;^1]^.    !I_jx/|</text>
+  <text class="line cyan l8" x="14" y="170" xml:space="preserve">n\|xcYXCf.}~[,^&quot;    ipUXvj\)</text>
+  <text class="line cyan l9" x="14" y="184" xml:space="preserve">u\(ruccJj?_!Yu^   . icXuxt|1</text>
+  <text class="line cyan l10" x="14" y="198" xml:space="preserve">XczXXzcYv/];zd) ,+&quot; .[cjf/)}</text>
+  <text class="line cyan l11" x="14" y="212" xml:space="preserve">(\vUUYzzn\&lt;;xd) &quot;~&apos;(cuft|)1}</text>
+  <text class="line cyan l12" x="14" y="226" xml:space="preserve">}~|XCJJu r(&quot;,[,`&apos; ]Jujf\){{}</text>
+  <text class="line cyan l13" x="14" y="240" xml:space="preserve">tnX0OJk%/i_;..^. ]Xrj/|)1{}[</text>
+  <text class="line cyan l14" x="14" y="254" xml:space="preserve">fJCxrzQ&amp;$k) ... ?tt\|1{{}[]]</text>
+  <text class="line cyan l15" x="14" y="268" xml:space="preserve">Lr|/+xYp#$$\   1Y i[}[[]][[[</text>
+  <text class="line cyan l16" x="14" y="282" xml:space="preserve">wQ|Lz_JQ0a%@m&quot;;j::,I~-??][[]</text>
+  <text class="line cyan l17" x="14" y="296" xml:space="preserve">mq){#1fvrCmo$C!;Ii~!!li+++++</text>
+  <text class="line cyan l18" x="14" y="310" xml:space="preserve">YZp}cd)(1xUQbmi!&gt;i]-&gt;!i[}[[]</text>
+  <text class="line cyan l19" x="14" y="324" xml:space="preserve">Y\pmnM/1v1(UpL&gt;-_i~]&gt;!I]||((</text>
+  <text class="line cyan l20" x="14" y="338" xml:space="preserve">Q|XbpaY_Lz|1Jv_]]+&gt;il&quot;:i[}{]</text>
+  <text class="line cyan l21" x="14" y="352" xml:space="preserve">Lj1wwdw]Urxz|YQ[__&lt;l,^:;i~+~</text>
+  <text class="line cyan l22" x="14" y="366" xml:space="preserve">JciYwwdYz(rJ1r0];]&gt;l``:::III</text>
+  <text class="line cyan l23" x="14" y="380" xml:space="preserve">Cv-OZmpQYvULt{L1:+?I..&quot;,ll!!</text>
+  <text class="line cyan l24" x="14" y="394" xml:space="preserve">z[rOQOmOcJZ0z(Y\;I&lt;&gt;..`&quot;&gt;!!l</text>
+  <text class="line cyan l25" x="14" y="408" xml:space="preserve">}InLCQOJc0ZQUtcr!:l&lt;&apos;&apos;^:+l!l</text>
+  <text class="line cyan l26" x="14" y="422" xml:space="preserve">_,uUUC0cnOQLt!f1_l&quot;:`&apos;:&gt;i;ll</text>
+  <text class="line cyan l27" x="14" y="436" xml:space="preserve">]tzcXYJCcUJYj_:lIl&quot;^`.,;::I;</text>
+  <text class="line green l28" x="14" y="458" xml:space="preserve">&gt; Ayush Gupta</text>
+  <text class="line dim l29" x="14" y="472" xml:space="preserve">&gt; CS Student · AI Dev · Greater Noida</text>
+  <text class="line gold l30" x="14" y="490" xml:space="preserve">render_complete ✓</text>
+
+  <!-- Cursor -->
+  <rect class="cursor" x="139" y="480" width="6" height="12" rx="1"/>
+</svg>
