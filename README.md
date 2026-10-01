@@ -337,11 +337,49 @@ motto: "Code. Create. Impact."
 
 <br/><br/>
 
-<!-- Activity Graph -->
+<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              ✨ DEVELOPER SPOTLIGHT SECTION ✨               ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
 
-![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=Ayushgupta0511&bg_color=0D1117&color=00D4FF&line=7C3AED&point=00D4FF&area=true&area_color=7C3AED&hide_border=true&custom_title=Contribution%20Graph)
+<!-- Spotlight Header -->
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=900&size=22&duration=3000&pause=1000&color=7C3AED&center=true&vCenter=true&repeat=true&width=500&height=45&lines=%E2%9C%A8+DEVELOPER+SPOTLIGHT+%E2%9C%A8" alt="Developer Spotlight" />
+
+<br/><br/>
+
+<!-- Photo + Activity Graph Side by Side -->
+<table>
+<tr>
+<td align="center" valign="middle" width="35%">
+
+<!-- Styled Profile Photo -->
+<img src="images/ayush_profile.jpg" alt="Ayush Gupta" width="260" style="border-radius: 16px;" />
+<br/><br/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=1500&color=00D4FF&center=true&vCenter=true&repeat=true&width=260&height=35&lines=CS+Student+%F0%9F%8E%93;AI+%26+Vision+Developer+%F0%9F%A4%96;Code.+Create.+Impact.+%F0%9F%9A%80;Building+the+Future+%E2%9A%A1" alt="Tagline" />
+
+</td>
+<td align="center" valign="middle" width="65%">
+
+<!-- Activity Graph (GitHub Action generated — reliable!) -->
+<img width="100%" src="assets/activity-graph.svg" alt="Contribution Graph"/>
+<br/>
+<sub><b>📊 Auto-updated daily via GitHub Actions</b></sub>
+
+</td>
+</tr>
+</table>
 
 <br/>
+
+<!-- Motivational Banner -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,14,16,18,20&height=2&section=header" width="80%"/>
+<br/><br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1200&color=00D4FF&center=true&vCenter=true&repeat=true&width=550&height=50&lines=%F0%9F%94%A5+Building+the+future%2C+one+commit+at+a+time;%F0%9F%92%A1+Turning+caffeine+into+code+since+2023;%F0%9F%8E%AF+AI+Developer+%7C+Problem+Solver+%7C+Dreamer;%E2%9A%A1+From+Greater+Noida+to+the+World" alt="Motivational Text" />
+
+<br/><br/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,14,16,18,20&height=2&section=header" width="80%"/>
+
+<br/><br/>
 
 <!-- Contribution Snake Animation -->
 <picture>

@@ -1,0 +1,44 @@
+name: Generate Activity Graph
+
+on:
+  # Runs at 00:00 UTC every day
+  schedule:
+    - cron: '0 0 * * *'
+  # Also runs on push to main
+  push:
+    branches:
+      - main
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate GitHub Activity Graph
+        uses: Ashutosh00710/github-readme-activity-graph@v2
+        with:
+          output_filename: "assets/activity-graph.svg"
+          username: Ayushgupta0511
+          bg_color: 0D1117
+          color: 00D4FF
+          line: 7C3AED
+          point: 00D4FF
+          area: true
+          area_color: 7C3AED
+          hide_border: true
+          custom_title: "Ayush's Contribution Graph"
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/activity-graph.svg
+          git diff --staged --quiet || git commit -m "📊 Update activity graph [automated]"
+          git push
